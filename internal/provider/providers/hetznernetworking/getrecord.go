@@ -81,7 +81,7 @@ func (p *Provider) getRecordID(ctx context.Context, client *http.Client, ip neti
 // For example: domain="example.com", zone="example.com" -> "@"
 // For example: domain="*.sub.example.com", zone="example.com" -> "*.sub"
 func (p *Provider) extractRRName() (string, error) {
-	domain := p.BuildDomainName()
+	domain := utils.BuildURLQueryHostname(p.owner, p.domain)
 	zone := p.zoneIdentifier
 
 	// Normalize domain and zone to lowercase
